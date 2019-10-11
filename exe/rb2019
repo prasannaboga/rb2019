@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "rb2019"
+
+puts __FILE__
+
+puts Rb2019::VERSION
