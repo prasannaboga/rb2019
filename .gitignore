@@ -14,3 +14,4 @@
 # coverage
 coverage
 /ffmpeg.log
+.env
