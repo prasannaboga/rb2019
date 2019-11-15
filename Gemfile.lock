@@ -39,6 +39,7 @@ GEM
     json (2.2.0)
     multi_json (1.14.0)
     mustermann (1.0.3)
+    ordinare (0.4.0)
     os (1.0.1)
     public_suffix (4.0.1)
     rack (2.0.7)
@@ -101,6 +102,7 @@ DEPENDENCIES
   bundler (~> 1.17)
   dotenv
   ffi
+  ordinare
   rake (~> 10.0)
   rb2019!
   rspec (~> 3.0)
