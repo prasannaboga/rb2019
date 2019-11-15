@@ -4,16 +4,3 @@ require "bundler/setup"
 require "rb2019"
 
 puts "\n#{__FILE__ }\n"
-
-sr = MyScreenRecorder.new('myrecording.mp4')
-
-sr.start_recording
-
-puts 'screen is recording..'
-
-(1..10).each do |i|
-  sleep(i*2)
-  puts i
-end
-
-sr.stop_recording
