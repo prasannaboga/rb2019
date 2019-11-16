@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'json'
 
 class App < Sinatra::Base
 
@@ -18,10 +19,18 @@ class App < Sinatra::Base
 
   get '/' do
     @page_title = "Index"
+
+    puts request.host
+
     erb :index, locals: {
       version: settings.version,
       environment: settings.environment,
       build: ENV['BUILD_START_TIME']
     }
+  end
+
+  get '/health-checks' do
+    content_type :json
+    {status: :ok}.to_json
   end
 end
