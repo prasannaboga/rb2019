@@ -1,7 +1,4 @@
-require 'dotenv/load'
 require 'sinatra'
-
-BUILD = DateTime.now.strftime('%Y.%m.%d.%l.%M.%S')
 
 class App < Sinatra::Base
 
@@ -24,7 +21,7 @@ class App < Sinatra::Base
     erb :index, locals: {
       version: settings.version,
       environment: settings.environment,
-      build: BUILD
+      build: ENV['BUILD_START_TIME']
     }
   end
 end
