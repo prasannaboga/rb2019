@@ -18,3 +18,4 @@ coverage
 
 /logs
 /spec/vcr/
+/vendor

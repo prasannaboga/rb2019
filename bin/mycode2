@@ -3,5 +3,44 @@
 require "bundler/setup"
 require 'dotenv/load'
 require "rb2019"
+require 'concurrent'
+require 'store_request'
+require 'faraday'
+require 'aws-sdk-cloudwatchlogs'
 
 puts "\n#{__FILE__ }\n"
+
+credentials = Aws::Credentials.new(ENV['RB2019_ACCESS_KEY'], ENV['RB2019_SECRET_KEY'])
+cw_logs = Aws::CloudWatchLogs::Client.new(region: 'us-east-1', credentials: credentials)
+
+resp = cw_logs.describe_log_streams({
+                                     log_group_name: "/ecs/td-rb2019",
+                                     order_by: 'LastEventTime',
+                                     descending: true,
+                                     limit: 1
+                                   })
+# puts resp
+log_stream = resp['log_streams'][0]
+# puts log_stream
+
+start_time = DateTime.strptime('2019-11-17T09:26:00+00:00', '%Y-%m-%dT%H:%M:%S%z')
+end_time = DateTime.strptime('2019-11-17T09:31:59+00:00', '%Y-%m-%dT%H:%M:%S%z')
+
+puts start_time
+puts end_time
+puts start_time.to_time.to_i
+puts end_time.to_time.to_i
+
+resp = cw_logs.get_log_events({
+  log_group_name: '/ecs/td-rb2019',
+  log_stream_name: log_stream[:log_stream_name],
+  start_time: start_time.to_time.to_i * 1000,
+  end_time: end_time.to_time.to_i * 1000
+})
+
+puts resp.events.count
+
+resp.events.each do |event|
+  puts event[:message]
+end
+

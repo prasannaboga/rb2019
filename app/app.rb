@@ -2,7 +2,7 @@ require 'sinatra'
 require 'json'
 require 'logger'
 
-class App < Sinatra::Base
+class WebApp < Sinatra::Base
 
   enable :static
   enable :logging

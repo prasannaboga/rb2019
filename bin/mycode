@@ -3,5 +3,40 @@
 require "bundler/setup"
 require 'dotenv/load'
 require "rb2019"
+require 'aws-sdk-cloudwatch'
+
 
 puts "\n#{__FILE__ }\n"
+
+credentials = Aws::Credentials.new(ENV['RB2019_ACCESS_KEY'], ENV['RB2019_SECRET_KEY'])
+cw = Aws::CloudWatch::Client.new(region: 'us-east-1', credentials: credentials)
+
+
+metric_data = {
+  namespace: "SiteVisits",
+  metric_data: [
+    {
+      metric_name: "VisitsCount",
+      dimensions: [
+        {
+          name: "SiteName",
+          value: "example.com"
+        }
+      ],
+      value: 0,
+      unit: "Count"
+    }
+  ]
+}
+
+60.times do |i|
+  puts i
+  sleep(30)
+  metric_data['metric_data'][0]['value'] = rand(1..10)
+  resp = cw.put_metric_data(metric_data)
+  puts resp
+end
+
+
+
+
