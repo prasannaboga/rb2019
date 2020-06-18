@@ -46,6 +46,13 @@ GEM
     faraday (0.17.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.3)
+    google-protobuf (3.12.2)
+    googleapis-common-protos-types (1.0.5)
+      google-protobuf (~> 3.11)
+    grpc (1.28.0)
+      google-protobuf (~> 3.11)
+      googleapis-common-protos-types (~> 1.0)
+    grpc-tools (1.28.0)
     hashdiff (1.0.0)
     jmespath (1.4.0)
     json (2.3.0)
@@ -122,6 +129,8 @@ DEPENDENCIES
   dotenv (= 2.7.5)
   faraday (= 0.17.1)
   ffi (= 1.11.3)
+  grpc
+  grpc-tools
   logger (= 1.4.2)
   ordinare (= 0.4.0)
   rake (~> 10.0)

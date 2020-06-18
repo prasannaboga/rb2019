@@ -10,8 +10,9 @@ COPY . $APP_PATH
 WORKDIR $APP_PATH
 RUN git init
 
-RUN chown -R $USER:$USER $APP_PATH
+RUN chown -vR $USER:$USER $APP_PATH
 
+RUN gem install bundler:2.0.2
 RUN bundle install --system
 
 USER $USER

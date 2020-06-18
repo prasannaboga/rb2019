@@ -12,3 +12,6 @@ env.*
 /logs/*
 *.log
 .idea/
+/.git
+/vendor
+/coverage
