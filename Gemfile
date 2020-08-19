@@ -5,7 +5,7 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 # Specify your gem's dependencies in rb2019.gemspec
 gemspec
 
-ruby '2.6.3', patchlevel: '62'
+ruby '2.7.1'
 
 gem 'aws-sdk-cloudwatch', '1.31.0'
 gem 'aws-sdk-cloudwatchlogs', '1.28'
@@ -24,5 +24,6 @@ gem 'sinatra-contrib', '2.0.7', require: 'sinatra/reloader'
 gem 'thin', '1.7.2'
 gem 'vcr', '5.0.0'
 gem 'webmock', '3.7.6'
-gem 'grpc'
-gem 'grpc-tools'
+gem 'ruby-debug-ide'
+gem 'debase'
+gem 'rubocop'
