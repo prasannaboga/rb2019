@@ -1,4 +1,4 @@
-FROM ruby:2.6.3
+FROM ruby:2.7.1
 
 ENV USER dockeruser
 ENV APP_PATH /home/$USER/rb2019
@@ -10,10 +10,12 @@ COPY . $APP_PATH
 WORKDIR $APP_PATH
 RUN git init
 
-RUN chown -vR $USER:$USER $APP_PATH
+RUN chown -R $USER:$USER $APP_PATH
 
 RUN gem install bundler:2.1.4
-RUN bundle install --system
+RUN bundle config set deployment 'true'
+RUN bundle config set without 'development test'
+RUN bundle install
 
 USER $USER
 

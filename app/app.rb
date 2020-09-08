@@ -6,7 +6,7 @@ class WebApp < Sinatra::Base
   enable :static
   enable :logging
 
-  set :environment, ENV.fetch("APP_ENV", "development").to_sym
+  # set :environment, ENV.fetch("APP_ENV", "development").to_sym
   set :version, ENV["VERSION"]
   set :public_folder, File.dirname(__FILE__) + "/public"
   set :logger, Logger.new(STDOUT)
