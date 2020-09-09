@@ -9,15 +9,22 @@ phases:
   pre_build:
     commands:
       - echo Entered into pre_build phase - `date`
+      - echo Logging into ECR
+      - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $REPO_URL
     finally:
       - echo Finally in pre_build phase - `date`
   build:
     commands:
       - echo Entered into build phase - `date`
+      - echo Building the Docker image
+      - docker build -t rb2019:$IMAGE_TAG .
+      - docker tag rb2019:$IMAGE_TAG $REPO_URL/rb2019:$IMAGE_TAG
     finally:
       - echo Finally in build phase - `date`
   post_build:
     commands:
       - echo Entered into post_build - `date`
+      - echo Pushing the Docker image
+      - docker push $REPO_URL/rb2019:$IMAGE_TAG
     finally:
       - echo Finally in post_build phase - `date`
