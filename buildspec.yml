@@ -21,7 +21,6 @@ phases:
     commands:
       - echo Entered into build phase - `date`
       - echo Building the Docker image
-      - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
       - docker build -t $REPO_URL:latest .
       - docker tag $REPO_URL:latest $REPO_URL:$IMAGE_TAG
     finally:

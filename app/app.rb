@@ -21,14 +21,15 @@ class WebApp < Sinatra::Base
 
   get "/" do
     @page_title = "Index"
+    server = request.env['SERVER_NAME']
 
-    logger.info "^*^*^*^*^*^ - " + request.host
+    logger.info "^*^*^*^*^*^ - " + server
 
     erb :index, locals: {
                   version: settings.version,
                   environment: settings.environment,
                   build: ENV["BUILD_START_TIME"],
-                  host: request.host,
+                  server: server,
                 }
   end
 
