@@ -33,3 +33,9 @@ phases:
       - docker push $REPO_URL
     finally:
       - echo Finally in post_build phase - `date`
+
+cache:
+  paths:
+    - '/root/.m2/**/*'
+    - '/root/.npm/**/*'
+    - 'build/**/*'
