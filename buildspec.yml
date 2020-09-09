@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Entered into install phase - `date`
+    finally:
+      - echo Finally in install phase - `date`
+  pre_build:
+    commands:
+      - echo Entered into pre_build phase - `date`
+    finally:
+      - echo Finally in pre_build phase - `date`
+  build:
+    commands:
+      - echo Entered into build phase - `date`
+    finally:
+      - echo Finally in build phase - `date`
+  post_build:
+    commands:
+      - echo Entered into post_build - `date`
+    finally:
+      - echo Finally in post_build phase - `date`
