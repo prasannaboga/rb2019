@@ -31,20 +31,20 @@ phases:
       - echo Pushing the Docker image
       - docker push $REPO_URL
       - printf '{"ImageURI":"%s"}' $REPO_URL:$IMAGE_TAG > imageDetail.json
-      - sed -i -e "s|aws-region-id|$AWS_REGION|g" appspec.yml
-      - sed -i -e "s|aws-account-id|$AWS_ACCOUNT_ID|g" appspec.yml
-      - sed -i -e "s|task-definition-version|$TASK_DEFINITION_VERSION|g" appspec.yml
+      - sed -i -e "s|aws-region-id|$AWS_REGION|g" appspec.yaml
+      - sed -i -e "s|aws-account-id|$AWS_ACCOUNT_ID|g" appspec.yaml
+      - sed -i -e "s|task-definition-version|$TASK_DEFINITION_VERSION|g" appspec.yaml
     finally:
       - echo Finally in post_build phase - `date`
 
 artifacts:
   files:
-    - appspec.yml
+    - appspec.yaml
     - imageDetail.json
   secondary-artifacts:
     DefinitionArtifact:
       files:
-        - appspec.yml
+        - appspec.yaml
     ImageArtifact:
       files:
         - imageDetail.json
