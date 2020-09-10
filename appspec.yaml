@@ -7,4 +7,3 @@ Resources:
       LoadBalancerInfo:
         ContainerName: container-rb2019-ec2
         ContainerPort: 7001
-      PlatformVersion: LATEST
