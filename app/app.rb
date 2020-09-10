@@ -1,6 +1,7 @@
 require "sinatra"
 require "json"
 require "logger"
+require "socket"
 
 class WebApp < Sinatra::Base
   enable :static
@@ -21,15 +22,15 @@ class WebApp < Sinatra::Base
 
   get "/" do
     @page_title = "Index"
-    server = request.env['SERVER_NAME']
+    server_name = Socket.gethostname
 
-    logger.info "^*^*^*^*^*^ - " + server
+    logger.info "^*^*^*^*^*^ - " + server_name
 
     erb :index, locals: {
                   version: settings.version,
                   environment: settings.environment,
                   build: ENV["BUILD_START_TIME"],
-                  server: server,
+                  server: server_name,
                 }
   end
 

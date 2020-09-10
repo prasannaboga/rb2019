@@ -1,0 +1,10 @@
+version: 0.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:aws-region-id:aws-account-id:task-definition/task-definition-version"
+        LoadBalancerInfo:
+          ContainerName: "container-rb2019-ec2"
+          ContainerPort: 7001
+      PlatformVersion: "LATEST"
