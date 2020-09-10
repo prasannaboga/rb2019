@@ -39,11 +39,12 @@ phases:
 
 artifacts:
   files:
-    - appspec.yml
+    - appspec.yaml
+    - imageDetail.json
   secondary-artifacts:
     DefinitionArtifact:
       files:
-        - appspec.yml
+        - appspec.yaml
     ImageArtifact:
       files:
         - imageDetail.json
