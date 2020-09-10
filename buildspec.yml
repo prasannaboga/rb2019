@@ -39,14 +39,6 @@ artifacts:
     - appspec.yaml
     - taskdef.json
     - imageDetail.json
-  secondary-artifacts:
-    DefinitionArtifact:
-      files:
-        - appspec.yaml
-        - taskdef.json
-    ImageArtifact:
-      files:
-        - imageDetail.json
 
 cache:
   paths:
