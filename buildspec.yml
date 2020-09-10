@@ -30,8 +30,12 @@ phases:
       - echo Entered into post_build - `date`
       - echo Pushing the Docker image
       - docker push $REPO_URL
+      - printf '[{"name":"td-rb2019-ec2:2","imageUri":"%s"}]' $REPO_URL:$IMAGE_TAG > imagedefinitions.json
     finally:
       - echo Finally in post_build phase - `date`
+
+artifacts:
+    files: imagedefinitions.json
 
 cache:
   paths:
